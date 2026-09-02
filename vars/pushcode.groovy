@@ -5,12 +5,12 @@ def call (String projectname, String imagetag, String dockerhubuser){
         usernamePassword(
             credentialsId: 'mustagi',
             passwordVariable: 'dockerhubpass',
-            usernameVariable: 'dockerhubuser'
+            usernameVariable: 'dockerhublog'
         )
     ]) {
-        sh 'docker login -u $dockerhubuser -p $dockerhubpass'
+        sh "docker login -u $dockerhublog -p $dockerhubpass"
     }
      //   sh 'docker image tag notes-app:latest $dockerhubuser/notes-app:latest'
-        sh 'docker push ${dockerhubuser}/${projectname}:${imagetag}'
+        sh "docker push ${dockerhubuser}/${projectname}:${imagetag}"
     
 }
